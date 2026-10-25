@@ -1,0 +1,19 @@
+services:
+  api:
+    build:
+      context: ../repo-app
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+    restart: unless-stopped
+  clock:
+    build:
+      context: ../repo-app
+    command: ["node", "clock.js"]
+    environment:
+      API_URL: http://api:3000
+      INTERVAL_MS: 5000
+    depends_on:
+      - api
+    restart: unless-stopped

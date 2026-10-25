@@ -1,9 +1,0 @@
-services:
-  app:
-    build:
-      context: ../repo-app
-    ports:
-      - "3000:3000"
-    environment:
-      PORT: 3000
-    restart: unless-stopped
